@@ -12,7 +12,9 @@ flags = [
 '-I',
 './src',
 '-I',
-'./lib/gtest/include',
+'./lib/gmock/include',
+'-I',
+'./lib/gmock/gtest/include',
 ]
 
 
