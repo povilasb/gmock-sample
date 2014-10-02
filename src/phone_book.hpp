@@ -6,6 +6,11 @@ namespace gmock_sample
 {
 
 class phone_book {
+public:
+	/**
+	 * Checks if phone book contains any entries.
+	 */
+	bool empty() const;
 };
 
 } // gmock-sample
