@@ -46,9 +46,11 @@ if (SKELETON_ENABLE_TESTS)
 	set(TEST_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/test")
 	file(GLOB_RECURSE TEST_SRC_FILES "${TEST_SRC_DIR}/*.cpp")
 
-	set(GTEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/gtest")
-	add_subdirectory(${GTEST_DIR})
-	include_directories("${GTEST_DIR}/include")
+	set(GMOCK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmock")
+	set(GTEST_DIR "${GMOCK_DIR}/gtest")
+	add_subdirectory(${GMOCK_DIR})
+	include_directories("${GMOCK_DIR}/include" "${GTEST_DIR}/include"
+		${SRC_DIR})
 
 
 	add_custom_target(run-tests COMMAND "")
@@ -61,7 +63,7 @@ if (SKELETON_ENABLE_TESTS)
 
 		add_executable("${TEST_NAME}" ${TEST_SRC})
 		add_dependencies("${TEST_NAME}" "${PROJECT_LIB}")
-		target_link_libraries(${TEST_NAME} "gtest" "gtest_main"
+		target_link_libraries(${TEST_NAME} gmock gtest gmock_main
 			${ALL_LIBS})
 
 		set(TEST_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/Testing/bin")
