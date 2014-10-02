@@ -64,7 +64,7 @@ if (SKELETON_ENABLE_TESTS)
 		add_executable("${TEST_NAME}" ${TEST_SRC})
 		add_dependencies("${TEST_NAME}" "${PROJECT_LIB}")
 		target_link_libraries(${TEST_NAME} gmock gtest gmock_main
-			${ALL_LIBS})
+			${PROJECT_LIB})
 
 		set(TEST_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/Testing/bin")
 		set_target_properties("${TEST_NAME}" PROPERTIES
