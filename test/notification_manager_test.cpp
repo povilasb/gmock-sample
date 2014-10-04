@@ -22,7 +22,8 @@ protected:
 	// notifications. That's why we are creating notifier mock object -
 	// to fasten the tests and isolate tested unit (notification manager)
 	// environment.
-	notification_manager nman{std::make_shared<notifier_mock>()};
+	std::shared_ptr<notifier_mock> notifier_{std::make_shared<notifier_mock>()};
+	notification_manager nman{notifier_};
 };
 
 
@@ -55,8 +56,10 @@ TEST_F(notification_manager_use, add_increases_notification_count)
 }
 
 
-TEST_F(notification_manager_use, dispatches_notifications_on_notify)
+TEST_F(notification_manager_use, uses_notifier_on_notify)
 {
+	EXPECT_CALL(*notifier_, exec(_)).Times(1);
+
 	ASSERT_NO_THROW(nman.notify());
 	ASSERT_FALSE(nman.has_notifications());
 }
