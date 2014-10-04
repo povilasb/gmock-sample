@@ -37,6 +37,7 @@ notification_manager::notification_count() const
 void
 notification_manager::notify()
 {
+	this->notifier_->exec("stub");
 	this->notification_count_ = 0;
 }
 
