@@ -1,5 +1,6 @@
 #include "phone_book.hpp"
 
+
 namespace gmock_sample
 {
 
@@ -28,6 +29,14 @@ std::string
 phone_book::get_nr(const std::string& name)
 {
 	return this->numbers_[name];
+}
+
+
+bool
+phone_book::has_nr(const std::string& name) const
+{
+	(void)name;
+	return false;
 }
 
 }

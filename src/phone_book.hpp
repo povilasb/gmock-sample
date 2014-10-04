@@ -25,7 +25,12 @@ public:
 	/**
 	 * @return phone number of the specified contact.
 	 */
-	std::string get_nr(const std::string& name);
+	std::string get_nr(const std::string& name); // TODO: make const.
+
+	/**
+	 * Checks if phone book contains number for the specified contact."
+	 */
+	bool has_nr(const std::string& name) const;
 
 private:
 	std::unordered_map<std::string, std::string> numbers_;
