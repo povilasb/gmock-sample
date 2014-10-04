@@ -28,7 +28,6 @@ public:
 	std::string get_nr(const std::string& name);
 
 private:
-	size_t size_ = 0;
 	std::unordered_map<std::string, std::string> numbers_;
 };
 
