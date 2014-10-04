@@ -1,10 +1,12 @@
+#include <memory>
+
 #include "notification_manager.hpp"
 
 
 namespace gmock_sample
 {
 
-notification_manager::notification_manager(notifier* _notifier)
+notification_manager::notification_manager(std::shared_ptr<notifier> _notifier)
 	: notifier_(_notifier)
 {
 }

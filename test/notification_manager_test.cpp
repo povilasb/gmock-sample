@@ -18,13 +18,11 @@ public:
 
 class notification_manager_use : public ::testing::Test {
 protected:
-	notifier_mock notifier_;
-
 	// Production notifiers might depend on network or might send SMS
 	// notifications. That's why we are creating notifier mock object -
 	// to fasten the tests and isolate tested unit (notification manager)
 	// environment.
-	notification_manager nman{&notifier_};
+	notification_manager nman{std::make_shared<notifier_mock>()};
 };
 
 

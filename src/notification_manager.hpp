@@ -3,6 +3,7 @@
 
 #include <string>
 #include <cstddef>
+#include <memory>
 
 
 namespace gmock_sample
@@ -20,7 +21,7 @@ public:
  */
 class notification_manager {
 public:
-	notification_manager(notifier* _notifier);
+	notification_manager(std::shared_ptr<notifier> _notifier);
 
 	bool has_notifications() const;
 
@@ -35,7 +36,7 @@ public:
 
 private:
 	std::size_t notification_count_ = 0;
-	notifier* notifier_;
+	std::shared_ptr<notifier> notifier_;
 };
 
 }
