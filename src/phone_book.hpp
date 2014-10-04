@@ -16,8 +16,14 @@ public:
 
 	void insert(const std::string& name, const std::string& phone_nr);
 
+	/**
+	 * @return phone book entry count.
+	 */
+	size_t size() const;
+
 private:
 	bool empty_{true};
+	size_t size_ = 0;
 };
 
 } // gmock-sample

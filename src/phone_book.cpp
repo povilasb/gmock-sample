@@ -17,6 +17,14 @@ phone_book::insert(const std::string& name, const std::string& phone_nr)
 	(void)phone_nr;
 
 	this->empty_ = false;
+	++this->size_;
+}
+
+
+size_t
+phone_book::size() const
+{
+	return this->size_;
 }
 
 }
