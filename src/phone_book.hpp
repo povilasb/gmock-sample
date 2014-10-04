@@ -25,7 +25,7 @@ public:
 	/**
 	 * @return phone number of the specified contact.
 	 */
-	std::string get_nr(const std::string& name); // TODO: make const.
+	std::string get_nr(const std::string& name) const;
 
 	/**
 	 * Checks if phone book contains number for the specified contact."

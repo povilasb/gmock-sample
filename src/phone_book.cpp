@@ -28,9 +28,9 @@ phone_book::size() const
 
 
 std::string
-phone_book::get_nr(const std::string& name)
+phone_book::get_nr(const std::string& name) const
 {
-	return this->numbers_[name];
+	return this->numbers_.at(name);
 }
 
 
