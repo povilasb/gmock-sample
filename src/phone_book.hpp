@@ -23,6 +23,8 @@ public:
 	size_t size() const;
 
 	/**
+	 * @throws exception if contact with the specified name is not found.
+	 *	Use has_nr() before calling this method.
 	 * @return phone number of the specified contact.
 	 */
 	std::string get_nr(const std::string& name) const;
