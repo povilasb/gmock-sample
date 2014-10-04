@@ -4,6 +4,12 @@
 namespace gmock_sample
 {
 
+notification_manager::notification_manager(notifier* _notifier)
+	: notifier_(_notifier)
+{
+}
+
+
 bool
 notification_manager::has_notifications() const
 {
