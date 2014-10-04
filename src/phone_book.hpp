@@ -2,6 +2,7 @@
 #define PHONE_BOOK_HPP 1
 
 #include <string>
+#include <unordered_map>
 
 
 namespace gmock_sample
@@ -28,6 +29,7 @@ public:
 
 private:
 	size_t size_ = 0;
+	std::unordered_map<std::string, std::string> numbers_;
 };
 
 } // gmock-sample
