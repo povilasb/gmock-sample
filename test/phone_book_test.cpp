@@ -34,3 +34,12 @@ TEST_F(phone_book_use, has_several_elements_after_multiple_inserts)
 
 	ASSERT_THAT(pb.size(), Gt(static_cast<size_t>(1)));
 }
+
+
+TEST_F(phone_book_use, contains_inserted_elements)
+{
+	pb.insert("povilas", "37065316000");
+	pb.insert("andrius", "37065316001");
+
+	ASSERT_THAT(pb.get_nr("andrius"), Eq(std::string("37065316001")));
+}
