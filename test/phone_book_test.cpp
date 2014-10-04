@@ -20,6 +20,7 @@ TEST(phone_book, is_not_empty_after_item_inserted)
 	phone_book pb;
 
 	pb.insert("povilas", "37065316000");
+
 	ASSERT_FALSE(pb.empty());
 }
 
