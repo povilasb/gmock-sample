@@ -25,4 +25,10 @@ notification_manager::notification_count() const
 	return this->notification_count_;
 }
 
+void
+notification_manager::notify()
+{
+	this->notification_count_ = 0;
+}
+
 } // gmock_sample.

@@ -20,6 +20,11 @@ public:
 
 	std::size_t notification_count() const;
 
+	/**
+	 * Dispatches all notifications and clears the list.
+	 */
+	void notify();
+
 private:
 	std::size_t notification_count_ = 0;
 };

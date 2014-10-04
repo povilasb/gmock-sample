@@ -40,3 +40,12 @@ TEST(notification_manager_use, add_increases_notification_count)
 
 	ASSERT_THAT(nman.notification_count(), Gt(static_cast<std::size_t>(1)));
 }
+
+
+TEST(notification_manager_use, dispatches_notifications_on_notify)
+{
+	notification_manager nman;
+
+	ASSERT_NO_THROW(nman.notify());
+	ASSERT_FALSE(nman.has_notifications());
+}
