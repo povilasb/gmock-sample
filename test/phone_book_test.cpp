@@ -44,3 +44,9 @@ TEST_F(phone_book_use, contains_inserted_elements)
 	ASSERT_THAT(pb.get_nr("andrius"), Eq(std::string("37065316001")));
 	ASSERT_THAT(pb.get_nr("povilas"), Eq(std::string("37065316000")));
 }
+
+
+TEST_F(phone_book_use, has_nr_returns_false_when_not_found)
+{
+	ASSERT_FALSE(pb.has_nr("my number"));
+}
