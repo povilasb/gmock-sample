@@ -21,6 +21,11 @@ public:
 	 */
 	size_t size() const;
 
+	/**
+	 * @return phone number of the specified contact.
+	 */
+	std::string get_nr(const std::string& name);
+
 private:
 	size_t size_ = 0;
 };

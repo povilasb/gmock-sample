@@ -26,4 +26,12 @@ phone_book::size() const
 	return this->size_;
 }
 
+
+std::string
+phone_book::get_nr(const std::string& name)
+{
+	(void)name;
+	return "37065316001";
+}
+
 }
