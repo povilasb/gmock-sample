@@ -42,4 +42,5 @@ TEST_F(phone_book_use, contains_inserted_elements)
 	pb.insert("andrius", "37065316001");
 
 	ASSERT_THAT(pb.get_nr("andrius"), Eq(std::string("37065316001")));
+	ASSERT_THAT(pb.get_nr("povilas"), Eq(std::string("37065316000")));
 }
