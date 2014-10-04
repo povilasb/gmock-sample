@@ -18,8 +18,12 @@ public:
 
 class notification_manager_use : public ::testing::Test {
 protected:
-	// Given.
 	notifier_mock notifier_;
+
+	// Production notifiers might depend on network or might send SMS
+	// notifications. That's why we are creating notifier mock object -
+	// to fasten the tests and isolate tested unit (notification manager)
+	// environment.
 	notification_manager nman{&notifier_};
 };
 
@@ -32,6 +36,10 @@ TEST_F(notification_manager_use, initialy_has_no_notifications)
 
 TEST_F(notification_manager_use, has_notifications_after_add)
 {
+	// Given.
+	// notification_manager nman;
+	// declared in notification_manager_use class
+
 	// When.
 	nman.add("Meeting at 10:00 am");
 
