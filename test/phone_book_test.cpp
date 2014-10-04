@@ -7,28 +7,28 @@ using namespace gmock_sample;
 using namespace ::testing;
 
 
-TEST(phone_book, is_initialy_empty)
-{
+class phone_book_use : public ::testing::Test {
+protected:
 	phone_book pb;
+};
 
+
+TEST_F(phone_book_use, is_initialy_empty)
+{
 	ASSERT_TRUE(pb.empty());
 }
 
 
-TEST(phone_book, is_not_empty_after_item_inserted)
+TEST_F(phone_book_use, is_not_empty_after_item_inserted)
 {
-	phone_book pb;
-
 	pb.insert("povilas", "37065316000");
 
 	ASSERT_FALSE(pb.empty());
 }
 
 
-TEST(phone_book, has_several_elements_after_multiple_inserts)
+TEST_F(phone_book_use, has_several_elements_after_multiple_inserts)
 {
-	phone_book pb;
-
 	pb.insert("povilas", "37065316000");
 	pb.insert("andrius", "37065316001");
 
