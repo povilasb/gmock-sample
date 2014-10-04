@@ -1,4 +1,5 @@
 #include <cstddef>
+#include <memory>
 
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
@@ -9,20 +10,28 @@
 using namespace gmock_sample;
 using namespace ::testing;
 
+class notifier_mock : public notifier {
+public:
+	MOCK_METHOD1(exec, void(const std::string&));
+};
 
-TEST(notification_manager_use, initialy_has_no_notifications)
+
+class notification_manager_use : public ::testing::Test {
+protected:
+	// Given.
+	notifier_mock notifier_;
+	notification_manager nman{&notifier_};
+};
+
+
+TEST_F(notification_manager_use, initialy_has_no_notifications)
 {
-	notification_manager nman;
-
 	ASSERT_FALSE(nman.has_notifications());
 }
 
 
-TEST(notification_manager_use, has_notifications_after_add)
+TEST_F(notification_manager_use, has_notifications_after_add)
 {
-	// Given.
-	notification_manager nman;
-
 	// When.
 	nman.add("Meeting at 10:00 am");
 
@@ -31,10 +40,8 @@ TEST(notification_manager_use, has_notifications_after_add)
 }
 
 
-TEST(notification_manager_use, add_increases_notification_count)
+TEST_F(notification_manager_use, add_increases_notification_count)
 {
-	notification_manager nman;
-
 	nman.add("Notification1");
 	nman.add("Notification2");
 
@@ -42,10 +49,8 @@ TEST(notification_manager_use, add_increases_notification_count)
 }
 
 
-TEST(notification_manager_use, dispatches_notifications_on_notify)
+TEST_F(notification_manager_use, dispatches_notifications_on_notify)
 {
-	notification_manager nman;
-
 	ASSERT_NO_THROW(nman.notify());
 	ASSERT_FALSE(nman.has_notifications());
 }
