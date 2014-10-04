@@ -50,3 +50,11 @@ TEST_F(phone_book_use, has_nr_returns_false_when_not_found)
 {
 	ASSERT_FALSE(pb.has_nr("my number"));
 }
+
+
+TEST_F(phone_book_use, has_nr_returns_true_when_contact_exists)
+{
+	pb.insert("povilas", "37065316001");
+
+	ASSERT_TRUE(pb.has_nr("povilas"));
+}
