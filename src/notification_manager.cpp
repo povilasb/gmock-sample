@@ -16,6 +16,14 @@ notification_manager::add(const std::string& notification)
 {
 	(void)notification;
 	this->has_notifications_ = true;
+	++this->notification_count_;
+}
+
+
+std::size_t
+notification_manager::notification_count() const
+{
+	return this->notification_count_;
 }
 
 } // gmock_sample.

@@ -1,3 +1,5 @@
+#include <cstddef>
+
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 
@@ -5,6 +7,7 @@
 
 
 using namespace gmock_sample;
+using namespace ::testing;
 
 
 TEST(notification_manager_use, initialy_has_no_notifications)
@@ -25,4 +28,15 @@ TEST(notification_manager_use, has_notifications_after_add)
 
 	// Then.
 	ASSERT_TRUE(nman.has_notifications());
+}
+
+
+TEST(notification_manager_use, add_increases_notification_count)
+{
+	notification_manager nman;
+
+	nman.add("Notification1");
+	nman.add("Notification2");
+
+	ASSERT_THAT(nman.notification_count(), Gt(static_cast<std::size_t>(1)));
 }

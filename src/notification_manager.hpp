@@ -2,6 +2,7 @@
 #define NOTIFICATION_MANAGER_HPP 1
 
 #include <string>
+#include <cstddef>
 
 
 namespace gmock_sample
@@ -17,8 +18,11 @@ public:
 
 	void add(const std::string& notification);
 
+	std::size_t notification_count() const;
+
 private:
 	bool has_notifications_ = false;
+	std::size_t notification_count_;
 };
 
 }
