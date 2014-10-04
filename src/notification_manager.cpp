@@ -1,4 +1,5 @@
 #include <memory>
+#include <string>
 
 #include "notification_manager.hpp"
 
