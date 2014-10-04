@@ -21,8 +21,7 @@ public:
 	std::size_t notification_count() const;
 
 private:
-	bool has_notifications_ = false;
-	std::size_t notification_count_;
+	std::size_t notification_count_ = 0;
 };
 
 }
