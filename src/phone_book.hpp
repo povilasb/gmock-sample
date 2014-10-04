@@ -22,7 +22,6 @@ public:
 	size_t size() const;
 
 private:
-	bool empty_{true};
 	size_t size_ = 0;
 };
 

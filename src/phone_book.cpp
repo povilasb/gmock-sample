@@ -6,7 +6,7 @@ namespace gmock_sample
 bool
 phone_book::empty() const
 {
-	return this->empty_;
+	return this->size_ == 0;
 }
 
 
@@ -16,7 +16,6 @@ phone_book::insert(const std::string& name, const std::string& phone_nr)
 	(void)name;
 	(void)phone_nr;
 
-	this->empty_ = false;
 	++this->size_;
 }
 
