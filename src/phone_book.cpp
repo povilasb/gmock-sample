@@ -1,3 +1,5 @@
+#include <iterator>
+
 #include "phone_book.hpp"
 
 
@@ -35,8 +37,7 @@ phone_book::get_nr(const std::string& name)
 bool
 phone_book::has_nr(const std::string& name) const
 {
-	(void)name;
-	return false;
+	return this->numbers_.find(name) != std::end(this->numbers_);
 }
 
 }
