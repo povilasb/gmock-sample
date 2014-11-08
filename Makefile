@@ -10,6 +10,7 @@ all:
 	@echo "\tmake debug"
 	@echo "\tmake test"
 	@echo "\tmake test-memleaks"
+	@echo "\tmake test-memleaks-debug"
 .PHONY: all
 
 
