@@ -15,6 +15,7 @@ public:
 	virtual void exec(const std::string& message) = 0;
 };
 
+
 /**
  * Notification manager accepts various notification messages, caches them
  * and dispatches on demand.
