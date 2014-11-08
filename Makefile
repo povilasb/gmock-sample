@@ -3,8 +3,6 @@ BUILD_TYPE ?= Debug
 BUILD_TESTS ?= OFF
 CMAKE_DIR = $(CURDIR)
 
-OUTPUT_EXEC = main
-
 
 all:
 	@echo "Usage:"
@@ -12,7 +10,6 @@ all:
 	@echo "\tmake debug"
 	@echo "\tmake test"
 	@echo "\tmake test-memleaks"
-	@echo "\tmake docs"
 .PHONY: all
 
 
@@ -61,19 +58,3 @@ test-memleaks-debug:
 clean:
 	rm -rf build
 .PHONY: clean
-
-
-run-release:
-	./$(BUILD_DIR)/release/$(OUTPUT_EXEC)
-.PHONY: run-release
-
-
-run-debug:
-	./$(BUILD_DIR)/debug/$(OUTPUT_EXEC)
-.PHONY: run-debug
-
-
-docs:
-	mkdir -p $(BUILD_DIR)
-	doxygen Doxyfile
-.PHONY: docs
