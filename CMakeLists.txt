@@ -2,9 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 
 # Configurable.
 
-if (NOT DEFINED PROJECT_NAME)
-	set(PROJECT_NAME "skeleton")
-endif(NOT DEFINED PROJECT_NAME)
+set(PROJECT_NAME "skeleton")
 
 option(SKELETON_ENABLE_TESTS "Enables or disables tests. Disabled by default."
 	OFF)

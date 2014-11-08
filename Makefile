@@ -3,8 +3,7 @@ BUILD_TYPE ?= Debug
 BUILD_TESTS ?= OFF
 CMAKE_DIR = $(CURDIR)
 
-PROJECT_NAME = main
-OUTPUT_EXEC = $(PROJECT_NAME)
+OUTPUT_EXEC = main
 
 
 all:
@@ -21,7 +20,6 @@ build:
 	mkdir -p $(BUILD_DIR) ; cd $(BUILD_DIR) ; \
 		cmake \
 		-D CMAKE_BUILD_TYPE=$(BUILD_TYPE) \
-		-D PROJECT_NAME=$(PROJECT_NAME) \
 		-D SKELETON_ENABLE_TESTS=$(BUILD_TESTS) \
 		$(CMAKE_DIR) ; make
 .PHONY: build
