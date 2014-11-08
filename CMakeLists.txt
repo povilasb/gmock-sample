@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.6)
 
 # Configurable.
 
-set(PROJECT_NAME "skeleton")
+set(PROJECT_NAME "gmock_sample")
 
 option(SKELETON_ENABLE_TESTS "Enables or disables tests. Disabled by default."
 	OFF)
