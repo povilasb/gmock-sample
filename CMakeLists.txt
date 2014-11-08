@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 2.6)
 
 set(PROJECT_NAME "gmock_sample")
 
-option(SKELETON_ENABLE_TESTS "Enables or disables tests. Disabled by default."
+option(GMOCK_SAMPLE_ENABLE_TESTS "Enables or disables tests. Disabled by default."
 	OFF)
 
 
@@ -39,7 +39,7 @@ target_link_libraries("${PROJECT_EXEC}" "${PROJECT_LIB}")
 # Testing rules.
 #
 
-if (SKELETON_ENABLE_TESTS)
+if (GMOCK_SAMPLE_ENABLE_TESTS)
 
 	set(TEST_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/test")
 	file(GLOB_RECURSE TEST_SRC_FILES "${TEST_SRC_DIR}/*.cpp")

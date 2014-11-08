@@ -18,7 +18,7 @@ build:
 	mkdir -p $(BUILD_DIR) ; cd $(BUILD_DIR) ; \
 		cmake \
 		-D CMAKE_BUILD_TYPE=$(BUILD_TYPE) \
-		-D SKELETON_ENABLE_TESTS=$(BUILD_TESTS) \
+		-D GMOCK_SAMPLE_ENABLE_TESTS=$(BUILD_TESTS) \
 		$(CMAKE_DIR) ; make
 .PHONY: build
 
