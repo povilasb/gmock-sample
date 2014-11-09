@@ -35,6 +35,5 @@ target_link_libraries("${PROJECT_EXEC}" "${PROJECT_LIB}")
 # Compile tests.
 if (GMOCK_SAMPLE_ENABLE_TESTS)
 	set(TESTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/test")
-	set(LIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 	add_subdirectory(${TESTS_DIR})
 endif()
