@@ -1,25 +1,22 @@
 cmake_minimum_required(VERSION 2.6)
+project(gmock_sample CXX)
 
-# Configurable.
 
-set(PROJECT_NAME "gmock_sample")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH}
+	"${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+set(PROJECT_EXEC "${PROJECT_NAME}")
+set(PROJECT_LIB "lib${PROJECT_NAME}")
 
 option(GMOCK_SAMPLE_ENABLE_TESTS "Enables or disables tests. Disabled by default."
 	OFF)
 
 
-project(${PROJECT_NAME} CXX)
-set(PROJECT_EXEC "${PROJECT_NAME}")
-set(PROJECT_LIB "lib${PROJECT_NAME}")
-
-
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}.")
+
 
 set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -fstack-protector -s")
 set(CMAKE_CXX_FLAGS "-std=c++11 -Wall -Wextra -Werror -pedantic")
-
-set(LIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
 
 
 set(SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src")
@@ -35,46 +32,9 @@ add_executable("${PROJECT_EXEC}" "${MAIN_SRC}")
 target_link_libraries("${PROJECT_EXEC}" "${PROJECT_LIB}")
 
 
-#
-# Testing rules.
-#
-
+# Compile tests.
 if (GMOCK_SAMPLE_ENABLE_TESTS)
-
-	set(TEST_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}/test")
-	file(GLOB_RECURSE TEST_SRC_FILES "${TEST_SRC_DIR}/*.cpp")
-
-	set(GMOCK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib/gmock")
-	set(GTEST_DIR "${GMOCK_DIR}/gtest")
-	add_subdirectory(${GMOCK_DIR})
-	include_directories("${GMOCK_DIR}/include" "${GTEST_DIR}/include"
-		${SRC_DIR})
-
-
-	add_custom_target(run-tests COMMAND "")
-	add_custom_target(run-memleak-tests COMMAND "")
-
-	find_program(VALGRIND "valgrind")
-
-	foreach(TEST_SRC ${TEST_SRC_FILES})
-		get_filename_component(TEST_NAME "${TEST_SRC}" NAME_WE)
-
-		add_executable("${TEST_NAME}" ${TEST_SRC})
-		add_dependencies("${TEST_NAME}" "${PROJECT_LIB}")
-		target_link_libraries(${TEST_NAME} gmock gtest gmock_main
-			${PROJECT_LIB})
-
-		set(TEST_OUTPUT_DIR "${CMAKE_CURRENT_BINARY_DIR}/Testing/bin")
-		set_target_properties("${TEST_NAME}" PROPERTIES
-			RUNTIME_OUTPUT_DIRECTORY "${TEST_OUTPUT_DIR}")
-
-		add_custom_command(TARGET run-tests
-			COMMAND "${TEST_OUTPUT_DIR}/${TEST_NAME}")
-
-		add_custom_command(TARGET run-memleak-tests
-			COMMAND "${VALGRIND}"
-			ARGS "--leak-check=full"
-				"${TEST_OUTPUT_DIR}/${TEST_NAME}"
-		)
-	endforeach()
+	set(TESTS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/test")
+	set(LIBS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/lib")
+	add_subdirectory(${TESTS_DIR})
 endif()
