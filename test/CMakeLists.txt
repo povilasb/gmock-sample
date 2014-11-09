@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 2.6)
 set(TEST_SRC_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
 file(GLOB_RECURSE TEST_SRC_FILES "${TEST_SRC_DIR}/*.cpp")
 
-set(GMock_ROOT "${LIBS_DIR}/gmock")
+
+set(GMOCK_ROOT "${LIBS_DIR}/gmock")
 find_package(GMock REQUIRED)
 
 set(GMOCK_DIR "${LIBS_DIR}/gmock")
